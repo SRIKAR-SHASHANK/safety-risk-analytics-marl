@@ -1,0 +1,81 @@
+{
+  "seed": 42,
+  "cv_train_frames": 1200,
+  "cv_eval_frames": 6000,
+  "gif_frames": 80,
+  "plant": {
+    "height": 240,
+    "width": 320,
+    "zone_size": 40,
+    "n_workers": 18,
+    "n_forklifts": 3,
+    "p_no_helmet": 0.18,
+    "p_no_vest": 0.15,
+    "ppe_drop_rate": 0.002,
+    "ppe_fix_rate": 0.01,
+    "danger_margin": 10
+  },
+  "render": {
+    "noise_std": 9.0,
+    "illumination_range": [
+      0.75,
+      1.15
+    ],
+    "blur_prob": 0.3,
+    "blur_sigma": 0.8,
+    "occlusion_prob": 0.08
+  },
+  "vision": {
+    "color_tol": 0.11,
+    "min_person_area": 18,
+    "single_person_area": 81,
+    "min_forklift_area": 50,
+    "match_dist": 6.0,
+    "track_max_dist": 12.0,
+    "track_max_missed": 5,
+    "ppe_vote_window": 5
+  },
+  "risk": {
+    "near_miss_px": 16.0,
+    "w_no_helmet": 1.0,
+    "w_no_vest": 0.8,
+    "w_danger_zone": 1.5,
+    "w_restricted": 2.0,
+    "w_near_miss": 3.0,
+    "ema_alpha": 0.05,
+    "event_min_frames": 3
+  },
+  "predict": {
+    "history": 30,
+    "horizon": 60,
+    "stride": 10,
+    "train_frac": 0.7
+  },
+  "marl": {
+    "n_agents": 4,
+    "episodes": 2000,
+    "horizon": 200,
+    "eval_episodes": 200,
+    "gamma": 0.95,
+    "lr": 0.05,
+    "eps_start": 1.0,
+    "eps_end": 0.05,
+    "eps_decay_frac": 0.7,
+    "hazard_rate": 0.9,
+    "rate_noise": 0.35,
+    "base_escalation": 0.01,
+    "escalation_growth": 0.004,
+    "max_escalation": 0.25,
+    "inspect_capacity": 3,
+    "incident_cost": 10.0,
+    "resolve_reward": 1.0,
+    "move_cost": 0.05,
+    "idle_inspect_cost": 0.1,
+    "prior_weight": 15.0,
+    "lr_end": 0.01,
+    "val_every": 100,
+    "val_episodes": 10,
+    "expected_incident_reward": true,
+    "obs_radius": 12
+  }
+}

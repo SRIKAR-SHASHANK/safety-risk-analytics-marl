@@ -1,0 +1,245 @@
+{
+  "ppe_classifier": {
+    "n_train": 7024,
+    "n_test": 2353,
+    "helmet": {
+      "accuracy": 0.991075223119422,
+      "violation_f1": 0.9786368260427264,
+      "confusion": [
+        [
+          481,
+          18
+        ],
+        [
+          3,
+          1851
+        ]
+      ]
+    },
+    "vest": {
+      "accuracy": 0.9961750956226094,
+      "violation_f1": 0.9902912621359223,
+      "confusion": [
+        [
+          459,
+          4
+        ],
+        [
+          5,
+          1885
+        ]
+      ]
+    }
+  },
+  "cv_detection": {
+    "person": {
+      "precision": 0.9998857730310127,
+      "recall": 0.9726111111111111,
+      "f1": 0.9860598721450899,
+      "tp": 105042,
+      "fp": 12,
+      "fn": 2958
+    },
+    "forklift": {
+      "precision": 1.0,
+      "recall": 0.9222222222222223,
+      "f1": 0.9595375722543353,
+      "tp": 16600,
+      "fp": 0,
+      "fn": 1400
+    },
+    "violation": {
+      "precision": 0.9783923671738588,
+      "recall": 0.9309894674380655,
+      "f1": 0.9541024978335892,
+      "tp": 31379,
+      "fp": 693,
+      "fn": 2326,
+      "fp_per_zone_frame": 0.00240625
+    }
+  },
+  "cv_fps": 26.474753414525143,
+  "events_by_type": {
+    "no_vest": 945,
+    "hazard_zone_no_ppe": 857,
+    "no_helmet": 314,
+    "near_miss_vehicle": 240,
+    "restricted_intrusion": 119
+  },
+  "incidents_by_type": {
+    "machine_contact": 97,
+    "struck_by_vehicle": 24,
+    "hazmat_exposure": 13
+  },
+  "risk_vs_incident_spearman": 0.662092868095921,
+  "prediction": {
+    "n_train": 19872,
+    "n_test": 8496,
+    "pos_rate_train": 0.02576489533011272,
+    "pos_rate_test": 0.025070621468926555,
+    "best_model": "CV risk features (LogReg)",
+    "importance": [
+      [
+        "recent_n_person",
+        0.07436255830285347
+      ],
+      [
+        "static_hazard_frac",
+        0.06179039709705778
+      ],
+      [
+        "static_restricted_frac",
+        0.05837823836252658
+      ],
+      [
+        "mean_n_restricted",
+        0.022198926587008106
+      ],
+      [
+        "mean_n_danger",
+        0.016025809976766704
+      ],
+      [
+        "recent_n_danger",
+        0.010340484696581442
+      ],
+      [
+        "static_aisle_frac",
+        0.009729526905891817
+      ],
+      [
+        "mean_n_person",
+        0.00474822859649755
+      ],
+      [
+        "mean_n_near_miss",
+        0.003420150667779942
+      ],
+      [
+        "mean_n_forklift",
+        0.001971626936555926
+      ],
+      [
+        "recent_n_no_vest",
+        0.00048637432061484633
+      ],
+      [
+        "recent_n_forklift",
+        0.0004597345431193167
+      ],
+      [
+        "mean_severity",
+        0.000415013725153468
+      ],
+      [
+        "recent_severity",
+        0.00038633345406255957
+      ],
+      [
+        "mean_n_no_vest",
+        0.0002903168943234169
+      ],
+      [
+        "mean_n_danger_no_ppe",
+        6.144152937259673e-05
+      ],
+      [
+        "past_incidents_300",
+        -0.00023261626987567397
+      ],
+      [
+        "recent_n_near_miss",
+        -0.0004567871634814979
+      ],
+      [
+        "recent_n_danger_no_ppe",
+        -0.000522649762310845
+      ],
+      [
+        "recent_n_restricted",
+        -0.001939319121295391
+      ],
+      [
+        "recent_n_no_helmet",
+        -0.00199237195477584
+      ],
+      [
+        "mean_n_no_helmet",
+        -0.0028709744887287724
+      ]
+    ],
+    "models": {
+      "Density baseline (LogReg)": {
+        "roc_auc": 0.690333841756321,
+        "pr_auc": 0.04944727469511408,
+        "brier": 0.024225431418885408,
+        "precision_at_top10pct": 0.06007067137809187,
+        "lift_at_top10pct": 2.3960583287712134
+      },
+      "CV risk features (LogReg)": {
+        "roc_auc": 0.7284454442863062,
+        "pr_auc": 0.06830201992193514,
+        "brier": 0.024164593858740677,
+        "precision_at_top10pct": 0.09305064782096584,
+        "lift_at_top10pct": 3.7115413328024682
+      },
+      "CV risk features (Gradient Boosting)": {
+        "roc_auc": 0.6803529940559288,
+        "pr_auc": 0.06576090000044253,
+        "brier": 0.02439072965674734,
+        "precision_at_top10pct": 0.07538280329799764,
+        "lift_at_top10pct": 3.0068182949285815
+      }
+    }
+  },
+  "marl": {
+    "Random": {
+      "incidents": 134.19,
+      "resolved": 31.605,
+      "mean_response_time": 9.286,
+      "idle_inspection_rate": 0.836,
+      "team_return": -1355.643
+    },
+    "Fixed patrol": {
+      "incidents": 43.67,
+      "resolved": 128.635,
+      "mean_response_time": 6.506,
+      "idle_inspection_rate": 0.015,
+      "team_return": -342.738
+    },
+    "Greedy (CV risk-chasing)": {
+      "incidents": 105.33,
+      "resolved": 62.94,
+      "mean_response_time": 6.198,
+      "idle_inspection_rate": 0.736,
+      "team_return": -1034.638
+    },
+    "IQL (independent)": {
+      "incidents": 80.29,
+      "resolved": 88.31,
+      "mean_response_time": 5.54,
+      "idle_inspection_rate": 0.492,
+      "team_return": -754.572
+    },
+    "VDN (cooperative MARL)": {
+      "incidents": 76.79,
+      "resolved": 93.08,
+      "mean_response_time": 5.474,
+      "idle_inspection_rate": 0.18,
+      "team_return": -711.766
+    }
+  },
+  "marl_significance": {
+    "IQL (independent)": {
+      "vs": "Fixed patrol",
+      "mean_diff": 36.620000000000005,
+      "p_value": 9.57019440794437e-59
+    },
+    "VDN (cooperative MARL)": {
+      "vs": "Fixed patrol",
+      "mean_diff": 33.120000000000005,
+      "p_value": 2.2835106791054e-61
+    }
+  },
+  "runtime_min": 17.039156798521677
+}
